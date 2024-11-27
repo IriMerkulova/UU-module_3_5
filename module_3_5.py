@@ -1,21 +1,29 @@
 # Рекурсивное умножение
-
 def get_multiplied_digits(number):
-    if number == 0: # это если о
-        return 0
     str_number = str(number)
-    if all(digit == '0' for digit in str_number): # если все нули
-        return 0
-    str_number = str_number.replace('0', '')  # удалили все '0' из строки
     first = int(str_number[0])
+    if number == 0:
+        return 0
+
     if len(str_number) > 1:
-        return first*get_multiplied_digits(int(str_number[1:]))
+        a = get_multiplied_digits(int(str_number[1:]))
+        if a != 0:
+            return first * a
+        else:
+            return first
     else:
         return first
 
-result1 = get_multiplied_digits(402030)
-result2 = get_multiplied_digits(00000)
+
+# Примеры использования функции
+result = get_multiplied_digits(40203)
+print(result)  # 24
+
+result2 = get_multiplied_digits(402030)
+print(result2)  # 24
+
 result3 = get_multiplied_digits(0)
-print(result1)
-print(result2)
-print(result3)
+print(result3)  # 0
+
+result4 = get_multiplied_digits(00000)
+print(result4)  # 0
